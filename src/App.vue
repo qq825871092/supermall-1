@@ -1,44 +1,22 @@
 <template>
   <div id="app">
-      <table>
-        <tr>
-          <td>编号</td>
-          <td>书名</td>
-          <td>作者</td>
-        </tr>
-        <tr v-for="i in books" :key="i.id">
-          <td>{{i.id}}</td>
-          <td>{{i.name}}</td>
-          <td>{{i.author}}</td>
-        </tr>
-      </table>
+    <keep-alive exclude="detail">
+  <router-view></router-view>
+    </keep-alive>
+    <main-tab-bar></main-tab-bar>
   </div>
 </template>
 
 <script>
+  import MainTabBar from 'components/content/maintarbar/MainTarBar'
 
 
 export default {
   name: 'App',
+  components: {MainTabBar},
   data(){
     return{
-      books:[
-        {
-         id:1,
-         name:'java',
-          author:'小王'
-        },
-        {
-          id:2,
-          name:'vue',
-          author:'小李'
-        },
-        {
-          id:3,
-          name:'Spring Boot',
-          author:'小明'
-        }
-    ]
+        MainTabBar
       }
     }
 
@@ -47,5 +25,5 @@ export default {
 </script>
 
 <style>
-
+  @import "assets/css/base.css";
 </style>
